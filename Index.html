@@ -1,0 +1,716 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Riley's Holy Baptism 🩵</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --blue: #a9d2e9;
+  --dark-blue: #466879;
+  --light-blue: #edf7fc;
+  --text: #536d80;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f5faff;
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+button { font-family: inherit; cursor: pointer; }
+.hidden { display: none !important; }
+
+/* ENVELOPE INTRO */
+
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #d9edfa, white, #c5e2f5);
+  transition: opacity 1s, visibility 1s;
+  padding: 20px;
+}
+
+.intro.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.intro h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 55px;
+  color: var(--dark-blue);
+  margin-bottom: 8px;
+}
+
+.intro p {
+  font-size: 11px;
+  letter-spacing: 3px;
+  margin-bottom: 40px;
+}
+
+.envelope {
+  position: relative;
+  width: 290px;
+  height: 190px;
+  background: #b7d9ef;
+  border-radius: 5px;
+  box-shadow: 0 15px 35px #789bb844;
+  cursor: pointer;
+  perspective: 800px;
+}
+
+.envelope:before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #cce6f7;
+  clip-path: polygon(0 0, 50% 55%, 100% 0);
+  z-index: 3;
+  transform-origin: top;
+  transition: transform .8s ease;
+}
+
+.envelope:after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #a5cde8;
+  clip-path: polygon(0 100%, 50% 48%, 100% 100%);
+  z-index: 2;
+}
+
+.envelope.open:before {
+  transform: rotateX(180deg);
+}
+
+.letter {
+  position: absolute;
+  width: 85%;
+  height: 150px;
+  background: white;
+  left: 7.5%;
+  top: 10px;
+  border-radius: 4px;
+  z-index: 1;
+  transition: transform 1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: var(--dark-blue);
+}
+
+.letter span {
+  font-family: 'Great Vibes', cursive;
+  font-size: 35px;
+}
+
+.envelope.open .letter {
+  transform: translateY(-100px);
+}
+
+.seal {
+  position: absolute;
+  z-index: 5;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #8cbce0;
+  color: white;
+  display: grid;
+  place-items: center;
+  top: 75px;
+  left: calc(50% - 22px);
+  font-size: 22px;
+}
+
+.open-btn {
+  margin-top: 55px;
+  padding: 13px 35px;
+  border: 1px solid #8bb8d8;
+  background: white;
+  color: var(--dark-blue);
+  border-radius: 30px;
+  letter-spacing: 2px;
+  font-size: 11px;
+}
+
+/* MAIN INVITATION */
+
+#website { display: none; }
+
+.hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 65px 18px;
+  overflow: hidden;
+
+  background:
+    radial-gradient(ellipse at 0% 0%, #b6dced 0%, transparent 22%),
+    radial-gradient(ellipse at 100% 0%, #c4e3f1 0%, transparent 20%),
+    radial-gradient(ellipse at 0% 100%, #b7d9ec 0%, transparent 18%),
+    radial-gradient(ellipse at 100% 100%, #c3e3f1 0%, transparent 20%),
+    #fffdf9;
+}
+
+.hero-content {
+  width: 100%;
+  max-width: 500px;
+  position: relative;
+  z-index: 2;
+}
+
+.top-crosses {
+  position: absolute;
+  top: -20px;
+  right: 0;
+  color: #648da0;
+  font-size: 25px;
+  line-height: 1.5;
+  letter-spacing: 12px;
+  transform: rotate(-8deg);
+}
+
+.small-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 13px;
+  letter-spacing: 4px;
+  color: #293c44;
+  margin-bottom: 30px;
+}
+
+.baby-circle {
+  width: 125px;
+  height: 125px;
+  margin: 0 auto 25px;
+  padding: 7px;
+  border-radius: 50%;
+  background: #f2eee6;
+  border: 1px solid #c5dce6;
+  position: relative;
+  box-shadow: 0 5px 20px #789bb422;
+}
+
+.baby-circle:before {
+  content: '✦  ·  ✦  ·  ✦';
+  position: absolute;
+  inset: -20px;
+  color: #597f8e;
+  font-size: 13px;
+  letter-spacing: 5px;
+  display: grid;
+  place-items: center;
+  transform: rotate(-20deg);
+  pointer-events: none;
+}
+
+.baby-circle img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(40px, 10vw, 60px);
+  font-weight: 400;
+  letter-spacing: 3px;
+  color: #355563;
+  margin-top: 15px;
+}
+
+.hero h2 {
+  font-size: 12px;
+  letter-spacing: 4px;
+  font-weight: 400;
+  color: #263b43;
+  margin-bottom: 15px;
+}
+
+.hero-message {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #303c40;
+}
+
+.date-banner {
+  display: inline-block;
+  background: #c6e4f0;
+  color: #263d47;
+  padding: 9px 17px;
+  border-radius: 7px;
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  margin: 20px 0;
+}
+
+.hero-bottom {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+  font-size: 10px;
+  line-height: 1.8;
+  color: #344951;
+}
+
+.church-icon {
+  font-size: 42px;
+  color: #789fac;
+}
+
+/* GENERAL SECTIONS */
+
+section:not(.hero) {
+  padding: 75px 20px;
+  text-align: center;
+}
+
+.section-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 48px;
+  color: #6799bc;
+  margin-bottom: 12px;
+  font-weight: normal;
+}
+
+.section-subtitle {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #92adbf;
+  margin-bottom: 35px;
+}
+
+/* PHOTO */
+
+.photo-section { background: white; }
+
+.photo-frame {
+  max-width: 340px;
+  margin: auto;
+  padding: 12px;
+  border: 1px solid #b6d8ed;
+  border-radius: 180px 180px 15px 15px;
+  background: #f0f8fd;
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 410px;
+  object-fit: cover;
+  border-radius: 170px 170px 10px 10px;
+}
+
+.caption {
+  font-family: 'Great Vibes', cursive;
+  font-size: 34px;
+  margin-top: 20px;
+  color: #699bbd;
+}
+
+/* EVENT DETAILS */
+
+.details { background: #eaf5fc; }
+
+.details-grid {
+  max-width: 850px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.detail-card {
+  background: white;
+  padding: 35px 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px #769bb018;
+}
+
+.detail-card .icon {
+  font-size: 30px;
+  margin-bottom: 15px;
+}
+
+.detail-card h3 {
+  font-family: 'Playfair Display', serif;
+  color: #628dac;
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.detail-card p {
+  font-size: 12px;
+  line-height: 2;
+}
+
+.map-btn {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 10px 20px;
+  background: #8db9d9;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+/* GODPARENTS */
+
+.godparents { background: white; }
+
+.godparent-card {
+  max-width: 450px;
+  margin: auto;
+  background: #f1f8fd;
+  border: 1px solid #d5eaf7;
+  border-radius: 15px;
+  padding: 35px 25px;
+}
+
+.godparent-card h3 {
+  font-family: 'Playfair Display', serif;
+  color: #6997b6;
+  font-size: 19px;
+  margin-bottom: 18px;
+}
+
+.godparent-card p {
+  font-size: 13px;
+  line-height: 2.5;
+}
+
+.divider {
+  width: 65px;
+  height: 1px;
+  background: #a7cce5;
+  margin: 22px auto;
+}
+
+/* CLOSING */
+
+.closing {
+  background: linear-gradient(145deg, #eaf5fc, #ffffff);
+  padding: 85px 25px;
+  text-align: center;
+}
+
+.closing p {
+  max-width: 420px;
+  margin: 15px auto;
+  font-size: 13px;
+  line-height: 2;
+  color: #71899b;
+}
+
+/* FOOTER */
+
+footer {
+  text-align: center;
+  padding: 45px 20px;
+  background: #b9d9ed;
+  color: white;
+}
+
+footer h2 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 45px;
+  font-weight: normal;
+}
+
+footer p {
+  font-size: 10px;
+  letter-spacing: 2px;
+  margin-top: 10px;
+}
+
+/* FLOATING DECORATIONS */
+
+.cloud {
+  position: absolute;
+  font-size: 35px;
+  opacity: .5;
+  animation: float 4s ease-in-out infinite;
+}
+
+.cloud.one { top: 10%; left: 8%; }
+.cloud.two { bottom: 12%; right: 8%; animation-delay: 1s; }
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+@media(max-width:500px) {
+  .hero { min-height: 100svh; }
+  .photo-frame img { height: 350px; }
+  section:not(.hero) { padding: 65px 18px; }
+  .top-crosses { right: 5px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- OPENING ENVELOPE -->
+
+<div class="intro" id="intro">
+  <h1>For You, With Love</h1>
+  <p>A SPECIAL INVITATION</p>
+
+  <div class="envelope" id="envelope">
+    <div class="letter">
+      <small>You're invited to</small>
+      <span>Riley's Baptism</span>
+      <small>December 6, 2026</small>
+    </div>
+    <div class="seal">♡</div>
+  </div>
+
+  <button class="open-btn" onclick="openInvitation()">
+    OPEN INVITATION ♡
+  </button>
+</div>
+
+<!-- MAIN WEBSITE -->
+
+<div id="website">
+
+  <!-- MAIN INVITATION -->
+
+  <header class="hero">
+
+    <span class="cloud one">☁</span>
+    <span class="cloud two">☁</span>
+
+    <div class="hero-content">
+
+      <div class="top-crosses">✝ ✝ ✝<br>✝ ✝</div>
+
+      <div class="small-heading">Join us for the</div>
+
+      <div class="baby-circle">
+        <img src="Riley-front.jpg" alt="Baby Riley">
+      </div>
+
+      <h1>BAPTISM</h1>
+
+      <h2>OF OUR SON RILEY</h2>
+
+      <p class="hero-message">
+        We cordially invite you to join the<br>
+        celebration to mark this special occasion.
+      </p>
+
+      <div class="date-banner">
+        December 6, 2026 | at [Time]
+      </div>
+
+      <div class="hero-bottom">
+        <div>
+          RSVP to<br>
+          [Parent's Name]<br>
+          [Contact Number]
+        </div>
+
+        <div class="church-icon">⛪</div>
+
+        <div>
+          [Church Name]<br>
+          [City, Province]<br>
+          [Postal Code]
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- BABY PHOTO -->
+
+  <section class="photo-section">
+
+    <div class="section-title">Our Little Angel</div>
+    <div class="section-subtitle">A precious gift from above</div>
+
+    <div class="photo-frame">
+      <img src="Riley-body.jpg" alt="Baby Riley">
+    </div>
+
+    <div class="caption">God bless you, Riley!</div>
+
+    <p style="font-size:12px;margin-top:12px;">
+      May your life always be filled with love, joy and faith.
+    </p>
+
+  </section>
+
+  <!-- EVENT DETAILS -->
+
+  <section class="details">
+
+    <div class="section-title">The Celebration</div>
+    <div class="section-subtitle">Please celebrate with us</div>
+
+    <div class="details-grid">
+
+      <div class="detail-card">
+        <div class="icon">⛪</div>
+        <h3>Holy Baptism</h3>
+
+        <p>
+          December 6, 2026<br>
+          [Church Name]<br>
+          [Church Address]<br>
+          [Ceremony Time]
+        </p>
+
+        <a class="map-btn"
+           href="https://www.google.com/maps/search/?api=1&query=YOUR+CHURCH+ADDRESS"
+           target="_blank" rel="noopener">
+          VIEW MAP
+        </a>
+      </div>
+
+      <div class="detail-card">
+        <div class="icon">🕊️</div>
+        <h3>Reception</h3>
+
+        <p>
+          [Reception Venue]<br>
+          [Reception Address]<br>
+          [Reception Time]
+        </p>
+
+        <a class="map-btn"
+           href="https://www.google.com/maps/search/?api=1&query=YOUR+RECEPTION+ADDRESS"
+           target="_blank" rel="noopener">
+          VIEW MAP
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GODPARENTS -->
+
+  <!-- <section class="godparents">
+
+    <div class="section-title">Our Godparents</div>
+    <div class="section-subtitle">
+      Special people in Riley's life
+    </div>
+
+    <div class="godparent-card">
+
+      <h3>Godmothers</h3>
+
+      <p>
+        [Godmother 1]<br>
+        [Godmother 2]<br>
+        [Godmother 3]
+      </p>
+
+      <div class="divider"></div>
+
+      <h3>Godfathers</h3>
+
+      <p>
+        [Godfather 1]<br>
+        [Godfather 2]<br>
+        [Godfather 3]
+      </p>
+
+    </div>
+  </section> -->
+
+  <!-- CLOSING MESSAGE -->
+
+  <section class="closing">
+
+    <div class="section-title">A Little Note</div>
+
+    <div class="divider"></div>
+
+    <p>
+      Your presence and prayers are the greatest gifts
+      we could receive.
+    </p>
+
+    <p>
+      We look forward to celebrating this blessed day
+      with you and our little angel.
+    </p>
+
+    <div class="caption">With love, Riley ♡</div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    <h2>With Love, Riley</h2>
+
+    <p>THANK YOU FOR BEING PART OF OUR SPECIAL DAY</p>
+
+    <p>♡ DECEMBER 06, 2026 ♡</p>
+  </footer>
+
+</div>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+function openInvitation() {
+
+  const envelope = document.getElementById('envelope');
+  const intro = document.getElementById('intro');
+  const website = document.getElementById('website');
+
+  envelope.classList.add('open');
+
+  setTimeout(() => {
+
+    intro.classList.add('hide');
+    website.style.display = 'block';
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+
+  }, 1100);
+
+}
+
+</script>
+
+</body>
+</html>
